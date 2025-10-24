@@ -51,6 +51,84 @@ Criados em: `Modeling → New Parameter → Numeric Range`
 Total_CO2_t =
 SUM(Fact_Emissions[CO2_kg]) / 1000
 
+Emissoes_Projetadas_CO2 =
+VAR Red = SELECTEDVALUE('Pct_Red_CO2'[Pct_Red_CO2 Value]) / 100
+VAR Base = [Total_CO2_t]
+RETURN Base * (1 - Red)
+
+Economia_Projetada_CO2 =
+[Total_CO2_t] - [Emissoes_Projetadas_CO2]
+
+Reducao_pct_CO2 =
+DIVIDE(([Total_CO2_t] - [Emissoes_Projetadas_CO2]), [Total_CO2_t], 0) * 100
+
+Total_Agua_m3 =
+SUM(Fact_EnergyWater[Consumo_Agua_m3])
+
+Agua_Projetada_m3 =
+VAR Red = SELECTEDVALUE('Pct_Red_Agua'[Pct_Red_Agua Value]) / 100
+VAR Base = [Total_Agua_m3]
+RETURN Base * (1 - Red)
+
+Economia_Projetada_Agua_m3 =
+[Total_Agua_m3] - [Agua_Projetada_m3]
+
+Reducao_pct_Agua =
+DIVIDE(([Total_Agua_m3] - [Agua_Projetada_m3]), [Total_Agua_m3], 0) * 100
+
+Total_Energia_kWh =
+SUM(Fact_EnergyWater[Consumo_Energia_kWh])
+
+Energia_Projetada_kWh =
+VAR Red = SELECTEDVALUE('Pct_Red_Energia'[Pct_Red_Energia Value]) / 100
+VAR Base = [Total_Energia_kWh]
+RETURN Base * (1 - Red)
+
+Economia_Projetada_Energia_kWh =
+[Total_Energia_kWh] - [Energia_Projetada_kWh]
+
+Total_Mulheres =
+CALCULATE(
+    COUNTROWS(Fact_DiversitySnapshot),
+    Fact_DiversitySnapshot[Genero] = "Feminino"
+)
+
+Mulheres_Projetadas =
+VAR Aum = SELECTEDVALUE('Pct_Aumento_Mulheres'[Pct_Aumento_Mulheres Value]) / 100
+VAR Base = [Total_Mulheres]
+RETURN Base * (1 + Aum)
+
+Delta_Diversidade_pct =
+DIVIDE(([Mulheres_Projetadas] - [Total_Mulheres]), [Total_Mulheres], 0) * 100
+
+Total_Incidentes =
+COUNTROWS(Fact_Incidents)
+
+Taxa_IncidentRate =
+DIVIDE([Total_Incidentes], COUNTROWS(Dim_Employee)) * 100
+
+Promocoes_por_Cargo =
+CALCULATE(
+    COUNTROWS(Fact_DiversitySnapshot),
+    Fact_DiversitySnapshot[Promovido] = "Sim"
+)
+
+ROI_Medio =
+AVERAGE(Fact_FinancialsESG[ROI])
+
+ROI_Ajustado =
+VAR Ajuste = SELECTEDVALUE('Ajuste_ROI'[Ajuste_ROI Value]) / 100
+VAR Base = [ROI_Medio]
+RETURN Base * (1 + Ajuste)
+
+Delta_ROI_pct =
+DIVIDE(([ROI_Ajustado] - [ROI_Medio]), [ROI_Medio], 0) * 100
+
+Impacto_Financeiro_ESG =
+VAR lucro_atual = SUM(Fact_FinancialsESG[LucroLiquido])
+VAR lucro_proj = lucro_atual * (1 + [Delta_ROI_pct] / 100)
+RETURN lucro_proj - lucro_atual
+
 
 ## 🎨 Layout e Design
 Tema escuro corporativo (#1C1C1C) com cores:
