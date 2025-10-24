@@ -166,11 +166,10 @@ Dashboard-ESG-Sustentabilidade/
 ## 💻 Requisitos
 - Power BI Desktop 2024+  
 - Excel 2021+  
-- Tipografia Segoe UI / Calibri Light  
 
 ## 👤 Autor
 **Guilherme Alencar – Analista de Dados**  
-LinkedIn | Medium | GitHub
+LinkedIn https://www.linkedin.com/in/guilherme-alencar-327413213/| Medium https://medium.com/@GuilhermeAlencarCruz
 
 ## 🧾 Licença
 Licença MIT. Livre para uso e modificação com créditos.
