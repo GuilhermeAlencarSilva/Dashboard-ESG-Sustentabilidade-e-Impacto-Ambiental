@@ -1,0 +1,6 @@
+﻿IDSite,NomeSite,País,Região,Cidade,Latitude,Longitude,SectorID
+S-001,Fábrica Norte,Brasil,Sudeste,São Paulo,-14.3751,-44.5325,SEC-05
+S-002,Fábrica Sul,Brasil,Sul,Curitiba,-17.404,-50.5439,SEC-03
+S-003,Centro Logístico,Brasil,Sudeste,Campinas,-6.1963,-50.8185,SEC-01
+S-004,Escritório SP,Brasil,Sudeste,São Paulo,-17.0424,-59.9168,SEC-03
+S-005,Planta Nordeste,Brasil,Nordeste,Recife,-12.8957,-50.5624,SEC-01
