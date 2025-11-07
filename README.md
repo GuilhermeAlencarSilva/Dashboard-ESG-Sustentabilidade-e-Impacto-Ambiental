@@ -2,7 +2,7 @@
 **Power BI | DAX | ESG Analytics | What-If Simulations**
 
 ## 🧭 Visão Geral
-Este projeto foi desenvolvido no **Power BI** para monitorar e simular indicadores de **Sustentabilidade (ESG)** — *Environmental, Social and Governance* — conectando metas ambientais e sociais com resultados financeiros.
+Este projeto foi desenvolvido no **Power BI** para monitorar e simular indicadores de **Sustentabilidade (ESG)** *Environmental, Social and Governance* conectando metas ambientais e sociais com resultados financeiros.
 
 O painel adota um **tema escuro corporativo**, é totalmente interativo e utiliza **parâmetros What-If** para análise de cenários.
 
